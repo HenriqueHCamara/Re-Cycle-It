@@ -2096,7 +2096,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2, y: 0}
-  m_SizeDelta: {x: 813.51324, y: 335.7}
+  m_SizeDelta: {x: 792.5214, y: 335.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1549383359
 MonoBehaviour:
@@ -2119,9 +2119,9 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 64
+    m_FontSize: 32
     m_FontStyle: 0
-    m_BestFit: 1
+    m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 182
     m_Alignment: 4
@@ -2132,7 +2132,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'How to play:
 
-    Drag and drop the correct trash into the correct bin'
+    Drag and drop the correct trash into the correct bin
+
+    If
+    you place the incorrect trash 3 (three) times or the time runs out, you lose'
 --- !u!222 &1549383360
 CanvasRenderer:
   m_ObjectHideFlags: 0

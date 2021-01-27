@@ -21,7 +21,9 @@ public class GameManager : MonoBehaviour
     public int playerScore;
     public int playerMaxScore = 3;
     public int playerLives = 3;
-    public Text playerScoreText;
+    //public Text playerScoreText;
+    public Text LivesText;
+    public List<Text> playerScoreTextList = new List<Text>();
 
     //objects
     //public List<GameObject> trashParentList = new List<GameObject>();
@@ -43,6 +45,8 @@ public class GameManager : MonoBehaviour
     {
         // Starts the timer automatically
         timerIsRunning = true;
+
+        DisplayLives(playerLives);
 
         PopulateTrashSOsList();
         PopulateBinSOsList();
@@ -87,6 +91,7 @@ public class GameManager : MonoBehaviour
     public void RemoveLife()
     {
         playerLives--;
+        DisplayLives(playerLives);
         if (playerLives <= 0)
         {
             GameEvents.current.GameOver(true);
@@ -108,7 +113,15 @@ public class GameManager : MonoBehaviour
 
     void DisplayPlayerScore(int score)
     {
-        playerScoreText.text = score.ToString();
+        foreach (var scoreText in playerScoreTextList)
+        {
+            scoreText.text = score.ToString();
+        }
+    }
+
+    public void DisplayLives(int lives) 
+    {
+        LivesText.text = lives.ToString();
     }
 
     void DisplayTime(float timeToDisplay)
