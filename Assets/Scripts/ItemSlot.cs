@@ -38,6 +38,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 _gameManager.GetComponent<GameManager>().IncreaseScore();
                 Destroy(eventData.pointerDrag.gameObject);
                 _gameManager.InstantiateNewTrash();
+                _gameManager.DestroyAllBinsAndGeneratteNewOnes();
                 volume.GetComponent<Animator>().SetTrigger("CorrectTrash");
             }
             else

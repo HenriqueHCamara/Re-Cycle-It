@@ -192,6 +192,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DestroyAllBinsAndGeneratteNewOnes() 
+    {
+        foreach (var binParent in BinParentList)
+        {
+            Destroy(binParent.GetComponentInChildren<ItemSlot>().gameObject);
+        }
+        PopulateBinSOsList();
+        InstantiateNewBin();
+    }
+
     public void ChangeTimer(float time, bool isCorrect)
     {
         if (isCorrect)
