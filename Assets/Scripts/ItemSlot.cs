@@ -44,6 +44,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             else
             {
                 GameEvents.current.IncorrectTrashDropped(id);
+                _gameManager.RemoveLife();
+                _gameManager.DestroyAllBinsAndGeneratteNewOnes();
+                Destroy(eventData.pointerDrag.gameObject);
+                _gameManager.InstantiateNewTrash();
             }
         }
     }
@@ -54,6 +58,11 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             _gameManager = FindObjectOfType<GameManager>();
         }
+        if (volume == null)
+        {
+            volume = GameObject.Find("Global Volume");
+        }
+
         AssignBin(_gameManager.SendRandomBinData());
     }
 

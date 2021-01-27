@@ -17,6 +17,7 @@ public class DragDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
         {
             canvas = GameObject.Find("Main Canvas").GetComponent<Canvas>();
         }
+
         _rectTransform = GetComponent<RectTransform>();
         _canvasGroup = GetComponent<CanvasGroup>();
     }

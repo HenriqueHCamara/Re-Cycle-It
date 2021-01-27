@@ -16,9 +16,11 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject gameWinScreen;
     private bool isGameWon = false;
+    private bool isGameOver = false;
     public bool isWinnable = false;
     public int playerScore;
     public int playerMaxScore = 3;
+    public int playerLives = 3;
     public Text playerScoreText;
 
     //objects
@@ -68,14 +70,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver(bool isGameOver)
+    public void GameOver(bool gameOver)
     {
-        if (isGameOver)
+        if (gameOver)
         {
             timeRemaining = 0;
             timerIsRunning = false;
+
+            isGameOver = gameOver;
+
             gameOverScreen.SetActive(true);
             Debug.Log("game over");
+        }
+    }
+
+    public void RemoveLife()
+    {
+        playerLives--;
+        if (playerLives <= 0)
+        {
+            GameEvents.current.GameOver(true);
         }
     }
 
@@ -180,27 +194,35 @@ public class GameManager : MonoBehaviour
 
     public void InstantiateNewTrash()
     {
-        Instantiate(trash, trashParent.transform.position, Quaternion.identity, trashParent.transform);
+        if (!isGameOver)
+        {
+            Instantiate(trash, trashParent.transform.position, Quaternion.identity, trashParent.transform);
+        }
     }
 
     public void InstantiateNewBin()
     {
         foreach (var binParent in BinParentList)
         {
-            var currentBin =  Instantiate(bin, binParent.transform.position, Quaternion.identity, binParent.transform);
+            var currentBin = Instantiate(bin, binParent.transform.position, Quaternion.identity, binParent.transform);
             BinSOs.Remove(currentBin.GetComponent<ItemSlot>().binSO);
         }
     }
 
-    public void DestroyAllBinsAndGeneratteNewOnes() 
+    public void DestroyAllBinsAndGeneratteNewOnes()
     {
         foreach (var binParent in BinParentList)
         {
             Destroy(binParent.GetComponentInChildren<ItemSlot>().gameObject);
         }
-        PopulateBinSOsList();
-        InstantiateNewBin();
+
+        if (!isGameOver)
+        {
+            PopulateBinSOsList();
+            InstantiateNewBin();
+        }
     }
+
 
     public void ChangeTimer(float time, bool isCorrect)
     {
