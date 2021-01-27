@@ -83,6 +83,9 @@ public class GameManager : MonoBehaviour
 
             isGameOver = gameOver;
 
+            DestroyAllBinsAndGeneratteNewOnes();
+            Destroy(GameObject.Find("Trash(Clone)"));
+
             gameOverScreen.SetActive(true);
             Debug.Log("game over");
         }
@@ -119,7 +122,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DisplayLives(int lives) 
+    public void DisplayLives(int lives)
     {
         LivesText.text = lives.ToString();
     }
@@ -132,14 +135,6 @@ public class GameManager : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-
-    private void PopulateTrashList()
-    {
-        foreach (Transform child in trashParent.transform)
-        {
-            trashList.Add(child.gameObject);
-        }
     }
 
     private List<UnityEngine.Object> PopulateTrashSOsList()
@@ -207,7 +202,7 @@ public class GameManager : MonoBehaviour
 
     public void InstantiateNewTrash()
     {
-        if (!isGameOver)
+        if (!isGameOver && timeRemaining > 0)
         {
             Instantiate(trash, trashParent.transform.position, Quaternion.identity, trashParent.transform);
         }
@@ -215,10 +210,14 @@ public class GameManager : MonoBehaviour
 
     public void InstantiateNewBin()
     {
-        foreach (var binParent in BinParentList)
+        if (timeRemaining > 0)
         {
-            var currentBin = Instantiate(bin, binParent.transform.position, Quaternion.identity, binParent.transform);
-            BinSOs.Remove(currentBin.GetComponent<ItemSlot>().binSO);
+
+            foreach (var binParent in BinParentList)
+            {
+                var currentBin = Instantiate(bin, binParent.transform.position, Quaternion.identity, binParent.transform);
+                BinSOs.Remove(currentBin.GetComponent<ItemSlot>().binSO);
+            }
         }
     }
 
@@ -245,6 +244,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("here");
             timeRemaining -= time;
         }
     }

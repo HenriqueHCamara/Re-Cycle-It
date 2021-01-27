@@ -29,7 +29,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if(eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             if (eventData.pointerDrag.GetComponent<Trash>().trashType == binType.ToString())
@@ -54,7 +54,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
     private void Awake()
     {
-        if (_gameManager == null) 
+        if (_gameManager == null)
         {
             _gameManager = FindObjectOfType<GameManager>();
         }
@@ -87,13 +87,13 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         }
     }
 
-    private void onCorrectTrash(int id) 
+    private void onCorrectTrash(int id)
     {
         if (id == this.id)
         {
             Debug.Log("correct trash dropped");
             _audioSource.PlayOneShot(correctTrash);
-            _gameManager.ChangeTimer(2f, true);
+            _gameManager.ChangeTimer(2f/4f, true);
         }
     }
 
@@ -103,7 +103,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             Debug.Log("incorrect trash dropped");
             _audioSource.PlayOneShot(incorrectTrash);
-            _gameManager.ChangeTimer(5f, false);
+            _gameManager.ChangeTimer(5f/4f, false);
         }
     }
 
@@ -113,7 +113,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         GameEvents.current.onIncorrectTrashDropped -= onIncorrectTrash;
     }
 
-    public void AssignBin(BinSO data) 
+    public void AssignBin(BinSO data)
     {
         binSO = data;
     }

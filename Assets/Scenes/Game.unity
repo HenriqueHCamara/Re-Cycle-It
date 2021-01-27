@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f64b65ab0704b4383e563d0c289b7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 1000
+  timeRemaining: 10
   timerIsRunning: 0
   timeText: {fileID: 754359575}
   gameOverScreen: {fileID: 984059109}
