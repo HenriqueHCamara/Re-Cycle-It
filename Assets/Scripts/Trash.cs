@@ -12,6 +12,8 @@ public class Trash : MonoBehaviour
     public Image _image;
     [HideInInspector]
     public string trashType;
+    [SerializeField]
+    private Text trashName;
 
     private void Awake()
     {
@@ -31,6 +33,7 @@ public class Trash : MonoBehaviour
         {
             _image.sprite = trashSO.Sprite;
             trashType = trashSO.TrashType.ToString();
+            trashName.text = trashSO.Name;
         }
     }
 

@@ -11,6 +11,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     private Image _image;
     [SerializeField]
     private Sprite _sprite;
+    [SerializeField]
+    private Text binName;
     private string binType;
 
     public int id;
@@ -20,6 +22,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     //audio shots
     public AudioClip correctTrash;
     public AudioClip incorrectTrash;
+    [SerializeField]
     AudioSource _audioSource;
 
     //SOs
@@ -78,6 +81,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             _image.sprite = binSO.Sprite;
             binType = binSO.TrashType.ToString();
+            binName.text = binSO.Name;
         }
 
 
@@ -91,9 +95,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     {
         if (id == this.id)
         {
-            Debug.Log("correct trash dropped");
-            _audioSource.PlayOneShot(correctTrash);
-            _gameManager.ChangeTimer(2f/4f, true);
+            _audioSource.PlayOneShot(correctTrash, 1);
+
+            _gameManager.ChangeTimer(2f, true);
         }
     }
 
@@ -101,9 +105,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     {
         if (id == this.id)
         {
-            Debug.Log("incorrect trash dropped");
-            _audioSource.PlayOneShot(incorrectTrash);
-            _gameManager.ChangeTimer(5f/4f, false);
+            _audioSource.PlayOneShot(incorrectTrash, 1);
+
+            _gameManager.ChangeTimer(3f, false);
         }
     }
 

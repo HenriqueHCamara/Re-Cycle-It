@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TrashType { Plastic, Metal, Paper }
+public enum TrashType { Plastic, Metal, Paper, Wood, Glass, Batteries}
 [CreateAssetMenu(fileName = "new trash", menuName = "Trash/Create New Trash", order = 1)]
 public class TrashSO : ScriptableObject
 {

@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //Timer variables
-    public float timeRemaining = 10;
+    public float timeRemaining = 10f;
+    public float maxTimeRemaining = 10f;
     public bool timerIsRunning = false;
     public Text timeText;
 
@@ -68,7 +69,6 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time has run out!");
                 GameEvents.current.GameOver(true);
             }
         }
@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
             Destroy(GameObject.Find("Trash(Clone)"));
 
             gameOverScreen.SetActive(true);
-            Debug.Log("game over");
         }
     }
 
@@ -197,6 +196,7 @@ public class GameManager : MonoBehaviour
         else
         {
             return null;
+            Debug.LogError("ERROR: There are no elements on the respective resource folder");
         }
     }
 
@@ -210,13 +210,20 @@ public class GameManager : MonoBehaviour
 
     public void InstantiateNewBin()
     {
+        var i = 0;
+
         if (timeRemaining > 0)
         {
-
             foreach (var binParent in BinParentList)
             {
                 var currentBin = Instantiate(bin, binParent.transform.position, Quaternion.identity, binParent.transform);
+                currentBin.GetComponent<ItemSlot>().id += i;
+                i++;
                 BinSOs.Remove(currentBin.GetComponent<ItemSlot>().binSO);
+                if (i >= BinParentList.Count)
+                {
+                    i = 0;
+                }
             }
         }
     }
@@ -240,11 +247,16 @@ public class GameManager : MonoBehaviour
     {
         if (isCorrect)
         {
+
             timeRemaining += time;
+            if (timeRemaining >= maxTimeRemaining)
+            {
+                timeRemaining = maxTimeRemaining;
+            }
+
         }
         else
         {
-            Debug.Log("here");
             timeRemaining -= time;
         }
     }

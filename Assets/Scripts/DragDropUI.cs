@@ -11,6 +11,8 @@ public class DragDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     private RectTransform _rectTransform;
     private CanvasGroup _canvasGroup;
 
+    private RectTransform _initialRectTransformposition;
+
     private void Awake()
     {
         if (canvas == null)
@@ -25,7 +27,7 @@ public class DragDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     {
         _canvasGroup.alpha = .5f;
         _canvasGroup.blocksRaycasts = false;
-        
+        _initialRectTransformposition = _rectTransform;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -37,7 +39,7 @@ public class DragDropUI : MonoBehaviour, IPointerDownHandler, IBeginDragHandler,
     {
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
-        
+        //_rectTransform.anchoredPosition = _initialRectTransformposition.anchoredPosition;
     }
 
     public void OnPointerDown(PointerEventData eventData)

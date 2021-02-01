@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced441f6e8ddbf342aa32823590a7305, type: 3}
   m_Name: MetalBin
   m_EditorClassIdentifier: 
-  name: 
+  name: Metal
   description: 
   sprite: {fileID: -745645855993587873, guid: 3d226a7b5a71dce469cae9aa37c5a521, type: 3}
   trashType: 1

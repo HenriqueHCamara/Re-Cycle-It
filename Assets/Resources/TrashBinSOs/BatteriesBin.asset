@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ced441f6e8ddbf342aa32823590a7305, type: 3}
-  m_Name: PaperBin
+  m_Name: BatteriesBin
   m_EditorClassIdentifier: 
-  name: Paper
+  name: Batteries
   description: 
-  sprite: {fileID: -6888756438569675735, guid: 3d226a7b5a71dce469cae9aa37c5a521, type: 3}
-  trashType: 2
+  sprite: {fileID: 0}
+  trashType: 5
