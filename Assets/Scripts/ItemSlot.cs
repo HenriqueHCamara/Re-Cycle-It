@@ -82,6 +82,33 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             _image.sprite = binSO.Sprite;
             binType = binSO.TrashType.ToString();
             binName.text = binSO.Name;
+
+            if (_image.sprite)
+            {
+                switch (binSO.TrashType)
+                {
+                    case TrashType.Plastic:
+                        _image.color = new Color(1, 0, 0, 1);
+                        break;
+                    case TrashType.Metal:
+                        _image.color = new Color(1, (float)0.92, (float)0.016, 1);
+                        break;
+                    case TrashType.Paper:
+                        _image.color = new Color(0, 0, 1, 1);
+                        break;
+                    case TrashType.Wood:
+                        _image.color = new Color((float)0.1, (float)0.1, (float)0.1, 1);
+                        break;
+                    case TrashType.Glass:
+                        _image.color = new Color(0, 1, 0, 1);
+                        break;
+                    case TrashType.Batteries:
+                        _image.color = new Color(1, (float)0.54, 0, 1);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
 

@@ -195,8 +195,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //Debug.LogError("ERROR: There are no elements on the respective resource folder");
             return null;
-            Debug.LogError("ERROR: There are no elements on the respective resource folder");
         }
     }
 
