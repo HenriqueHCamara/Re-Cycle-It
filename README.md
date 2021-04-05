@@ -3,5 +3,5 @@ Re-Cycle-It game repo
 
 Author: HenriqueHCamara
 
-This project is been developed for a course im taking online.
-Probably not the best, but if you find something usefull feel free to use it :P
+This project is being developed for a course i'm taking online.
+Probably not the best and it's still full of bugs (Well, it's in development), but if you find something usefull feel free to use it, i just don't guarantee that it will work :P
