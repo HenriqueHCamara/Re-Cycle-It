@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Plastic
   description: its plastic
-  sprite: {fileID: 21300000, guid: 9dcf03931cf69d64083b4ccda0ceff8b, type: 3}
+  sprite: {fileID: 21300000, guid: 84cbee2245f5e8c478bd2bfea3bdb8e3, type: 3}
   trashType: 0

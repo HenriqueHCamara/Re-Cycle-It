@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Metal Ingot
   description: A metal bar
-  sprite: {fileID: 21300000, guid: af8ba88ea4f3a7a42b2110add50b8ece, type: 3}
+  sprite: {fileID: 21300000, guid: a3c992b57f8be0e44a0edf9854f13d69, type: 3}
   trashType: 1

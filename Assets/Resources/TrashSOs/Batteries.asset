@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Batteries
   description: 
-  sprite: {fileID: 21300000, guid: 6221f9c2c74374641ba09ef3af59a0f9, type: 3}
+  sprite: {fileID: 21300000, guid: 58d0c5dac673542428d4b1a740dcf830, type: 3}
   trashType: 5

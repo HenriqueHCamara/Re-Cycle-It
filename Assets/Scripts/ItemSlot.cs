@@ -134,7 +134,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         {
             _audioSource.PlayOneShot(incorrectTrash, 1);
 
-            _gameManager.ChangeTimer(3f, false);
+            _gameManager.ChangeTimer(1f, false);
         }
     }
 
